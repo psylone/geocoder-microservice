@@ -21,6 +21,7 @@ module ApplicationLoader
   end
 
   def init_app
+    require_file 'config/initializers/rabbit_mq'
     require_dir 'config/initializers'
   end
 

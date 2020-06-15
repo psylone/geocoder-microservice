@@ -6,7 +6,4 @@ class Application
   def self.environment
     ENV.fetch('RACK_ENV').to_sym
   end
-
-  def self.run
-  end
 end

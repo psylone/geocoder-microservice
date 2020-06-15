@@ -1,11 +1,10 @@
 #!/usr/bin/env ruby
 
+puts "Application starting..."
+
 require_relative '../config/environment'
 
-puts "Starting application in #{Application.environment} mode..."
-
-Application.run
-
+puts "* Environment: #{Application.environment}"
 puts '* Started'
 puts 'Use Ctrl-C to stop'
 
