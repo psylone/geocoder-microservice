@@ -17,11 +17,11 @@ module ApplicationLoader
     require_file 'config/application'
     require_file 'app/services/basic_service'
     require_dir 'app/contracts'
+    require_file 'app/lib/ads_service/rpc_api'
     require_dir 'app'
   end
 
   def init_app
-    require_file 'config/initializers/rabbit_mq'
     require_dir 'config/initializers'
   end
 
