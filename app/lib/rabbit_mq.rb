@@ -1,20 +1,12 @@
 module RabbitMq
-  class NotInitializedError < StandardError
-    MSG = 'RabbitMq was not initialized. Call RabbitMq.initialize! before accessing the RabbitMq connection'.freeze
-
-    def initialize(msg = MSG)
-      super
-    end
-  end
-
   extend self
 
-  def initialize!
-    @connection = Bunny.new.start
-  end
+  @mutex = Mutex.new
 
   def connection
-    @connection || raise(NotInitializedError)
+    @mutex.synchronize do
+      @connection ||= Bunny.new.start
+    end
   end
 
   def channel
