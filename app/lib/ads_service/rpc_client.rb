@@ -24,6 +24,8 @@ module AdsService
 
     private
 
+    attr_writer :correlation_id
+
     def create_queue
       channel = RabbitMq.channel
       channel.queue('ads', durable: true)
@@ -32,6 +34,22 @@ module AdsService
     def create_reply_queue
       channel = RabbitMq.channel
       channel.queue('amq.rabbitmq.reply-to', exclusive: true)
+    end
+
+    def publish(payload, opts = {})
+      @lock.synchronize do
+        self.correlation_id = SecureRandom.uuid
+
+        @queue.publish(
+          payload,
+          opts.merge(
+            correlation_id: @correlation_id,
+            reply_to: @reply_queue.name
+          )
+        )
+
+        @condition.wait(@lock)
+      end
     end
   end
 end
