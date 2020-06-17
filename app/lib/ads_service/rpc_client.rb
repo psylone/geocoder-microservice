@@ -43,6 +43,7 @@ module AdsService
         @queue.publish(
           payload,
           opts.merge(
+            app_id: 'geocoder',
             correlation_id: @correlation_id,
             reply_to: @reply_queue.name
           )
