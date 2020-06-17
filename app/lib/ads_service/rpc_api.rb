@@ -1,5 +1,3 @@
-require 'securerandom'
-
 module AdsService
   module RpcApi
     def update_coordinates(id, coordinates)

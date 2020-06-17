@@ -1,3 +1,6 @@
+require 'securerandom'
+require_relative 'rpc_api'
+
 module AdsService
   class RpcClient
     extend Dry::Initializer[undefined: false]
@@ -33,7 +36,7 @@ module AdsService
 
     def create_reply_queue
       channel = RabbitMq.channel
-      channel.queue('amq.rabbitmq.reply-to', exclusive: true)
+      channel.queue('amq.rabbitmq.reply-to')
     end
 
     def publish(payload, opts = {})
