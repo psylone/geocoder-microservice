@@ -61,6 +61,9 @@ GEM
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     minitest (5.14.1)
+    oj (3.10.6)
+    ougai (1.8.5)
+      oj (~> 3.10)
     rake (13.0.1)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
@@ -92,6 +95,7 @@ DEPENDENCIES
   factory_bot (~> 5.2.0)
   fast_jsonapi (~> 1.5)
   i18n (~> 1.8.2)
+  ougai (~> 1.8.5)
   rake (~> 13.0.1)
   rspec (~> 3.9.0)
 
