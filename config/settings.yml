@@ -1,6 +1,7 @@
 app:
   name: geocoder
 rabbitmq:
+  host: <%= ENV['RABBITMQ_HOST'] %>
   consumer_pool: 10
 logger:
   path: log/app.log
