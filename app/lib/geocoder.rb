@@ -20,7 +20,7 @@ module Geocoder
       city = row['city']
       lat = row['geo_lat'].to_f
       lon = row['geo_lon'].to_f
-      result[city] = [lat, lon]
+      result[city] = { lat: lat, lon: lon }
       result
     end
   end

@@ -6,9 +6,9 @@ queue.subscribe(manual_ack: true) do |delivery_info, properties, payload|
   coordinates = Geocoder.geocode(payload['city'])
 
   if coordinates.present?
-    client = AdsService::RpcClient.fetch
+    client = GeocoderService::Client.new
     client.update_coordinates(payload['id'], coordinates)
   end
-
+ensure
   channel.ack(delivery_info.delivery_tag)
 end
